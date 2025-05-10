@@ -1,4 +1,4 @@
-/*
+*/
 ==========================================================================================================================================
 Data Modeling
 ==========================================================================================================================================
@@ -12,7 +12,7 @@ Propósito del código:
 Uso:
 	Estas Vistas pueden ser usadas directamente para consultas de Data Analytics e informes.
 ==========================================================================================================================================
-/*
+*/
 
 #Para llegar al modelo relacional depurado, unimos las tablas mediante JOINS, considerando la información que entregan las tablas (CLIENTES - PRODUCTOS - VENTAS)
 
