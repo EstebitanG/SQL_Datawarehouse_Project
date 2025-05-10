@@ -79,6 +79,8 @@ ON cc.cst_key = eca.cid_clean
 LEFT JOIN erp_loc_a101_clean AS ela
 ON cc.cst_key = ela.cid;
 
+SELECT * FROM DIMENSION_CLIENTES;
+
 #Tablas PRODUCTOS (2 tablas - erp_px_cat_g1v2, crm_prd_info)
 
 #Creamos una Vista con la dimensión completa (Tabla Producto) considerando crear una clave sintética (surrogate key) mediante ROW NUMBER
@@ -129,7 +131,10 @@ ON csd.sls_cust_id = cu.customer_id;  #tanto product_key como customer_key sirve
 
 SELECT * FROM FACT_VENTAS;
 
-SELECT * FROM FACT_VENTAS AS f
-LEFT JOIN DIMENSION_CLIENTES AS c
-ON c.customer_key = f.customer_key
-WHERE c.customer_key IS NULL; #TODO MATCHEA PERFECTAMENTE
+#Tablas finales
+SELECT * FROM DIMENSION_CLIENTES;
+
+SELECT * FROM DIMENSION_PRODUCTO;
+
+SELECT * FROM FACT_VENTAS;
+
