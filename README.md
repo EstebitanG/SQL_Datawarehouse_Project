@@ -1,5 +1,12 @@
-# SQL_Datawarehouse_Project
-Proyecto de creación de un Datawarehouse usando MySQL Workbench, incluyendo ETL, Modelado de Datos y Análisis de Datos
+# Proyecto de Creación de Datawarehouse en MySQL
+
+Este proyecto de creación de un Datawarehouse usando MySQL Workbench forma parte de mi portfolio de proyectos de Data Analytics y Data Science. Sirve principalmente para la generación de métricas empresariales mediante querys SQL, reportes BI e incluso Machine Learning. 
+
+# Flujo de trabajo del proyecto
+
+El flujo de trabajo del proyecto consistió de las siguientes etapas:
+
+!flujo de datos proyecto SQL Datawarehouse
 
 #### Especificaciones
 
