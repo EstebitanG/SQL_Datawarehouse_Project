@@ -23,7 +23,7 @@ Desarrollar un análisis SQL para entregar métricas de interés tales como:
 
 -**Tendencia de las ventas**
 
-
+Estos indicadores potencian las decisiones estratégicas de los encargados en la toma de decisiones empresarial.
 
 
 
