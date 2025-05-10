@@ -13,13 +13,13 @@ Columnas:
 
 | Columna | Tipo de Dato | Descripción |
 | --- | --- | --- |
-| customer_key | BIGINT | Contenido 3 |
-| customer_id | INT | Contenido 6 |
-| customer_number | VARCHAR(50) | Contenido 3 |
-| first_name | VARCHAR(50) | Contenido 6 |
-| last_name | VARCHAR(50) | Contenido 3 |
-| country | VARCHAR(50) | Contenido 6 |
-| marital_status | VARCHAR(7) | Contenido 3 |
-| gender | VARCHAR(7) | Contenido 6 |
-| birthdate | DATE | Contenido 3 |
-| create_date | DATE | Contenido 6 |
+| customer_key | BIGINT | Clave sintética que identifica de manera única a cada cliente |
+| customer_id | INT | Identificador único para cada cliente |
+| customer_number | VARCHAR(50) | Identificador alfanumérico representante del cliente, usado para trazabilidad y referencia |
+| first_name | VARCHAR(50) | Primer nombre del cliente |
+| last_name | VARCHAR(50) | Apellido del cliente |
+| country | VARCHAR(50) | Nacionalidad del cliente (ej. 'Australia') |
+| marital_status | VARCHAR(7) | Estado civil del cliente (ej. 'Married') |
+| gender | VARCHAR(7) | Género del cliente (ej. 'Single') |
+| birthdate | DATE | Fecha de nacimiento del cliente, en formato YYYY-MMM-DD |
+| create_date | DATE | Fecha de registro del cliente en el sistema |
