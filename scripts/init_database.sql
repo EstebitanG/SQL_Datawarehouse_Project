@@ -1,15 +1,17 @@
-*/
+/*
 
-============================================
+============================================================================================================================================
 
 #### Creación de base de datos y comandos DDL
 
-============================================
+============================================================================================================================================
 
 	Propósito del código
 
-	Estas querys crean una nueva base de datos llamada "Datawarehouse", y dentro de ella se crean las tablas existentes en los csv. Se definen los tipos de datos de cada columna
-	de cada tabla mediante observación.
+	Estas querys crean una nueva base de datos llamada "Datawarehouse", y dentro de ella se crean las tablas existentes en los csv. Se 
+	definen los tipos de datos de cada columna de cada tabla mediante observación.
+
+============================================================================================================================================
 
 */
 
