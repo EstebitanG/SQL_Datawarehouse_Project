@@ -55,8 +55,8 @@ Columnas:
 | Columna | Tipo de Dato | Descripción |
 | --- | --- | --- |
 | order_number | VARCHAR(50) | Identificador alfanumérico único para cada orden de venta (ej. 'SO43699') |
-| product_key | BIGINT | Clave sintética qeu vincula la orden de venta con la DIMENSION_PRODUCTO (clave_foránea_1 FK1) |
-| customer_key | BIGINT | Clave sintética qeu vincula la orden de venta con la DIMENSION_CLIENTES (clave_foránea_2 FK2) |
+| product_key | BIGINT | Clave sintética que vincula la orden de venta con la DIMENSION_PRODUCTO (clave_foránea_1 FK1) |
+| customer_key | BIGINT | Clave sintética que vincula la orden de venta con la DIMENSION_CLIENTES (clave_foránea_2 FK2) |
 | order_date | DATE | Fecha donde la orden fue emitida |
 | shipping_date | DATE | Fecha donde la orden fue transportada hacia el cliente |
 | due_date | DATE | Fecha de vencimiento del pago del pedido |
