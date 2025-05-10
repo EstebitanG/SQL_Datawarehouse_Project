@@ -1,4 +1,18 @@
-#Data Modeling
+/*
+==========================================================================================================================================
+Data Modeling
+==========================================================================================================================================
+
+Propósito del código:
+	Este código tiene por objetivo llegar a la etapa final de la base de datos. Esto se logra mediante el uso de JOINS y creación de 
+	Vistas, identificando las tablas que corresponden a Dimensiones (clave primaria PK) y FACTS (clave foránea FK).
+
+	Cada Vista corresponde a las transformaciones finales de las tablas, listas para ser usadas para consultas empresariales.
+
+Uso:
+	Estas Vistas pueden ser usadas directamente para consultas de Data Analytics e informes.
+==========================================================================================================================================
+/*
 
 #Para llegar al modelo relacional depurado, unimos las tablas mediante JOINS, considerando la información que entregan las tablas (CLIENTES - PRODUCTOS - VENTAS)
 
