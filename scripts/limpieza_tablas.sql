@@ -1,3 +1,21 @@
+
+===========================================
+
+Procedimiento Almacenado: Limpieza de tablas
+
+===========================================
+
+Propósito del código
+
+
+
+
+
+
+
+
+
+
 #Cleaning the tables
 
 USE datawarehouse;
