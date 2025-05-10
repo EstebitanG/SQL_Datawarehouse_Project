@@ -1,6 +1,6 @@
 # Proyecto de Creación de Datawarehouse en MySQL
 
-Este proyecto de creación de un Datawarehouse usando MySQL Workbench forma parte de mi portfolio de proyectos de Data Analytics y Data Science. Sirve principalmente para la generación de métricas empresariales mediante querys SQL, reportes BI e incluso Machine Learning. 
+Este proyecto de creación de un Datawarehouse usando MySQL Workbench forma parte de mi portfolio de proyectos de Data Analytics y Data Science. La creación de este Datawarehouse requiere de una comprensión profunda de Data Modeling, tipos de datos en bases de datos, procesos ETL y querys SQL para la creación y manipulación de datos, de forma de obtener como resultado una base de datos funcional.
 
 # Flujo de trabajo del proyecto
 
@@ -18,19 +18,9 @@ El flujo de trabajo del proyecto consistió de las siguientes etapas:
 
 -**Documentación**: se provee la documentación del modelo de datos para los interesados en el análisis posterior de los datos.
 
-#### BI: Analítica y Reporting (Data Analytics)
+El datawarehouse resultante sirve principalmente para la generación de métricas empresariales mediante querys SQL, reportes BI e incluso Machine Learning, empoderando a los tomadores de decisiones empresariales para mejorar la planeación y resultados en los negocios.
 
-#### Objetivo
-
-Desarrollar un análisis SQL para entregar métricas de interés tales como:
-
--**Comportamiento del consumidor**
-
--**Performance de productos**
-
--**Tendencia de las ventas**
-
-Estos indicadores potencian las decisiones estratégicas de los encargados en la toma de decisiones empresarial.
+Créditos a Baraa Khatib Salikini (Data With Baraa), que resultó ser un apoyo, complemento, aprendizaje y fuente de información para llevar a cabo este proyecto (https://www.youtube.com/@DataWithBaraa).
 
 
 
