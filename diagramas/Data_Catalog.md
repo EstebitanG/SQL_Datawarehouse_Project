@@ -7,7 +7,7 @@ necesarios de detallar.
 
 1. DIMENSION_CLIENTES
 
-Propósito: almacena características sociodemográficas de los clientes 
+Propósito: almacena características sociodemográficas de los clientes. 
 
 Columnas:
 
@@ -26,7 +26,7 @@ Columnas:
 
 2. DIMENSION_PRODUCTO
 
-Propósito: almacena características de los productos 
+Propósito: almacena características de los productos. 
 
 Columnas:
 
@@ -44,3 +44,22 @@ Columnas:
 | product_line | VARCHAR(11) | Línea de producto específica a la que pertence el producto (ej.'Road Mountain') |
 | start_date | DATE | Fecha donde el producto estuvo disponible en inventario para la venta |
 | MAINTENANCE | VARCHAR(50) | Indica si el producto requiere mantención (ej. 'Yes'/'No') |
+
+3. FACT_VENTAS
+
+Propósito: almacena transacciones históricas de venta para objetivos de análisis.
+
+Columnas:
+
+
+| Columna | Tipo de Dato | Descripción |
+| --- | --- | --- |
+| order_number | VARCHAR(50) | Identificador alfanumérico único para cada orden de venta (ej. 'SO43699') |
+| product_key | BIGINT | Clave sintética qeu vincula la orden de venta con la DIMENSION_PRODUCTO (clave_foránea_1 FK1) |
+| customer_key | BIGINT | Clave sintética qeu vincula la orden de venta con la DIMENSION_CLIENTES (clave_foránea_2 FK2) |
+| order_date | DATE | Fecha donde la orden fue emitida |
+| shipping_date | DATE | Fecha donde la orden fue transportada hacia el cliente |
+| due_date | DATE | Fecha de vencimiento del pago del pedido |
+| sales_amount | DOUBLE | Valor monetario total de la orden, expresado en unidades monetarias |
+| price | VARCHAR(50) | Precio por unidad del producto |
+| quantity | INT | Cantidad de unidades ordenadas del producto |
