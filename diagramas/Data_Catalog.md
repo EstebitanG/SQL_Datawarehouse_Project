@@ -21,5 +21,5 @@ Columnas:
 | country | VARCHAR(50) | Nacionalidad del cliente (ej. 'Australia') |
 | marital_status | VARCHAR(7) | Estado civil del cliente (ej. 'Married') |
 | gender | VARCHAR(7) | Género del cliente (ej. 'Single') |
-| birthdate | DATE | Fecha de nacimiento del cliente, en formato YYYY-MMM-DD |
+| birthdate | DATE | Fecha de nacimiento del cliente, en formato YYYY-MMM-DD (ej. '1980-08-12') |
 | create_date | DATE | Fecha de registro del cliente en el sistema |
