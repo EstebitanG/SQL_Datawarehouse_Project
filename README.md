@@ -13,7 +13,17 @@ Proyecto de creación de un Datawarehouse usando MySQL Workbench, incluyendo ETL
 
 #### BI: Analítica y Reporting (Data Analytics)
 
-####Objetivo
+#### Objetivo
+
+Desarrollar un análisis SQL para entregar métricas de interés tales como:
+
+-**Comportamiento del consumidor**
+
+-**Performance de productos**
+
+-**Tendencia de las ventas**
+
+
 
 
 
