@@ -8,7 +8,7 @@ El flujo de trabajo del proyecto consistió de las siguientes etapas:
 
 ![flujo de datos proyecto SQL Datawarehouse drawio](https://github.com/user-attachments/assets/b1c1c2fd-ab26-4642-a7d3-8636d6f5fef0)
 
-#### Especificaciones
+## Especificaciones
 
 -**Fuentes de datos**: se importa la data desde dos fuentes (ERP y CRM) mediante archivos csv.
 
@@ -18,8 +18,10 @@ El flujo de trabajo del proyecto consistió de las siguientes etapas:
 
 -**Documentación**: se provee la documentación del modelo de datos para los interesados en el análisis posterior de los datos.
 
-### Aplicaciones
+# Aplicaciones
 El datawarehouse resultante sirve principalmente para la generación de métricas empresariales mediante querys SQL, reportes BI e incluso Machine Learning, empoderando a los tomadores de decisiones empresariales para mejorar la planeación y resultados en los negocios.
+
+# Agradecimientos
 
 Créditos a [Baraa Khatib Salikini](https://www.youtube.com/@DataWithBaraa) (Data With Baraa), que resultó ser un apoyo, complemento, aprendizaje y fuente de información para llevar a cabo este proyecto .
 
