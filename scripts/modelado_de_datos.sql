@@ -3,18 +3,11 @@
 Data Modeling
 ==========================================================================================================================================
 
-Propósito del código:
-	Este código tiene por objetivo llegar a la etapa final de la base de datos. Esto se logra mediante el uso de JOINS y creación de 
-	Vistas, identificando las tablas que corresponden a Dimensiones (clave primaria PK) y FACTS (clave foránea FK).
+Uso de JOINS y creación de  Vistas, por medio de identificación de  tablas que corresponden a Dimensiones (clave primaria PK) y FACTS (clave foránea FK).
 
-	Cada Vista corresponde a las transformaciones finales de las tablas, listas para ser usadas para consultas empresariales.
-
-Uso:
-	Estas Vistas pueden ser usadas directamente para consultas de Data Analytics e informes.
 ==========================================================================================================================================
 */
 
-#Para llegar al modelo relacional depurado, unimos las tablas mediante JOINS, considerando la información que entregan las tablas (CLIENTES - PRODUCTOS - VENTAS)
 
 #Tablas CLIENTES (3 tablas - crm_cust_info_clean, erp_cust_az12_clean, erp_loc_a101_clean)
 SELECT 
@@ -36,7 +29,7 @@ ON cc.cst_key = eca.cid_clean
 LEFT JOIN erp_loc_a101_clean AS ela
 ON cc.cst_key = ela.cid;
 
-#Renombramos las columnas a nombres amigables
+#Renombrado de columnas a nombres amigables
 SELECT 
 		cc.cst_id AS customer_id,
 		cc.cst_key AS customer_number,
@@ -56,7 +49,7 @@ ON cc.cst_key = eca.cid_clean
 LEFT JOIN erp_loc_a101_clean AS ela
 ON cc.cst_key = ela.cid;
 
-#Creamos una Vista con la Dimensión completa (Tabla Clientes) considerando crear una clave sintética (surrogate key) mediante ROW NUMBER
+# Vista con la Dimensión completa (Tabla Clientes) considerando crear una clave sintética (surrogate key) mediante ROW NUMBER
 
 CREATE VIEW DIMENSION_CLIENTES AS
 SELECT 
