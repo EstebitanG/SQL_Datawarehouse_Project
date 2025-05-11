@@ -20,7 +20,7 @@ El flujo de trabajo del proyecto consistió de las siguientes etapas:
 
 El datawarehouse resultante sirve principalmente para la generación de métricas empresariales mediante querys SQL, reportes BI e incluso Machine Learning, empoderando a los tomadores de decisiones empresariales para mejorar la planeación y resultados en los negocios.
 
-Créditos a Baraa Khatib Salikini (Data With Baraa), que resultó ser un apoyo, complemento, aprendizaje y fuente de información para llevar a cabo este proyecto (https://www.youtube.com/@DataWithBaraa).
+Créditos a [Baraa Khatib Salikini](https://www.youtube.com/@DataWithBaraa) (Data With Baraa), que resultó ser un apoyo, complemento, aprendizaje y fuente de información para llevar a cabo este proyecto .
 
 
 
