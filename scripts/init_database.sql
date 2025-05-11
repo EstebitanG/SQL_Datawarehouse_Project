@@ -5,14 +5,6 @@
 #### Creación de base de datos y comandos DDL
 
 ============================================================================================================================================
-
-	Propósito del código
-
-	Estas querys crean una nueva base de datos llamada "Datawarehouse", y dentro de ella se crean las tablas existentes en los csv. Se 
-	definen los tipos de datos de cada columna de cada tabla mediante observación.
-
-============================================================================================================================================
-
 */
 
 CREATE DATABASE DataWarehouse;
@@ -28,7 +20,7 @@ CREATE TABLE crm_cust_info (cst_id INT, cst_key VARCHAR(50),
                             cst_gndr VARCHAR(50),
                             cst_create_date DATE);
 
-DROP TABLE crm_prd_info;
+DROP TABLE IF EXISTS crm_prd_info;
 
 CREATE TABLE crm_prd_info (prd_inf INT, prd_key VARCHAR(50),
 						prd_nm VARCHAR(50) NULL,
