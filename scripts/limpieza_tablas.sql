@@ -5,15 +5,9 @@ Procedimiento Almacenado: Limpieza de tablas
 
 ========================================================================================
 
-	Propósito del código:
-
-	Este procedimiento almacenado comprende la Extracción, Transformación y Carga (ETL) de las tablas para su posterior manipulación.
-	Acciones principales:
-		-Visualización preliminar de datos importados mediante csv.
-		-Inserción de datos transformados y limpios mediante querys de limpieza.
-	
-	Parámetros: Ninguno
-	Este procedimiento almacenado no acepta ni devuelve ningún parámetro ni variable.
+Extracción, Transformación y Carga (ETL) de las tablas por medio de
+	-Visualización preliminar de datos importados mediante csv.
+	-Inserción de datos transformados y limpios mediante querys de limpieza.
 	
 ========================================================================================
 
