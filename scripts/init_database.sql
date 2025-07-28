@@ -29,14 +29,14 @@ CREATE TABLE crm_cust_info (cst_id INT, cst_key VARCHAR(50),
                             cst_create_date DATE);
 
 CREATE TABLE crm_prd_info (prd_inf INT, prd_key VARCHAR(50),
-						prd_nm VARCHAR(50) NULL,
+			prd_nm VARCHAR(50) NULL,
                         prd_cost VARCHAR(50) NULL,
                         prd_line VARCHAR(50) NULL,
                         prd_start_dt DATE NULL,
                         prd_end_dt DATE NULL);
 										
 CREATE TABLE CRM_sales_details (sls_ord_num VARCHAR(50), sls_prd_key VARCHAR(50),
-							sls_cust_id INT NULL, 
+			    sls_cust_id INT NULL, 
                             sls_order_dt DATE NULL,
                             sls_ship_dt DATE NULL, 
                             sls_due_dt DATE NULL,
@@ -45,14 +45,14 @@ CREATE TABLE CRM_sales_details (sls_ord_num VARCHAR(50), sls_prd_key VARCHAR(50)
                             sls_price VARCHAR(50) NULL);
 
 CREATE TABLE erp_CUST_AZ12 (CID VARCHAR(50),
-						BDATE DATE NULL, 
+			BDATE DATE NULL, 
                         GEN VARCHAR(50) NULL);
 
 CREATE TABLE erp_LOC_A101 (CID VARCHAR(50),
-						CNTRY VARCHAR(50));
+			   CNTRY VARCHAR(50));
                         
 CREATE TABLE erp_PX_CAT_G1V2 (ID VARCHAR(50), 
-							CAT VARCHAR(50),
+			    CAT VARCHAR(50),
                             SUBCAT VARCHAR(50),
                             MAINTENANCE VARCHAR(50));
                             
