@@ -6,7 +6,7 @@ Este proyecto de creación de un Datawarehouse usando MySQL Workbench forma part
 
 El flujo de trabajo del proyecto consistió de las siguientes etapas:
 
-![flujo de datos proyecto SQL Datawarehouse drawio](https://github.com/user-attachments/assets/b1c1c2fd-ab26-4642-a7d3-8636d6f5fef0)
+<img width="1363" height="504" alt="flujo de datos proyecto SQL Datawarehouse drawio" src="https://github.com/user-attachments/assets/621f970f-9b29-49a2-b33d-43c8073168eb" />
 
 #### Especificaciones
 
