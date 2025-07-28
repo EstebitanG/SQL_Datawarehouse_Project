@@ -19,7 +19,7 @@ Procedimiento Almacenado: Limpieza de tablas
 
 */
 
-#Cleaning the tables
+#Limpieza de tablas
 
 USE datawarehouse;
 
