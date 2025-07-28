@@ -28,8 +28,6 @@ CREATE TABLE crm_cust_info (cst_id INT, cst_key VARCHAR(50),
                             cst_gndr VARCHAR(50),
                             cst_create_date DATE);
 
-DROP TABLE crm_prd_info;
-
 CREATE TABLE crm_prd_info (prd_inf INT, prd_key VARCHAR(50),
 						prd_nm VARCHAR(50) NULL,
                         prd_cost VARCHAR(50) NULL,
