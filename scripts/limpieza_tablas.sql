@@ -13,7 +13,8 @@ Procedimiento Almacenado: Limpieza de tablas
 		-Inserción de datos transformados y limpios mediante querys de limpieza.
 	
 	Parámetros: Ninguno
-	Este procedimiento almacenado no acepta ni devuelve ningún parámetro ni variable.
+	Este procedimiento almacenado no acepta ni devuelve ningún parámetro ni variable (considerando que el procedimiento actúa como una
+	tarea de limpieza.
 	
 ========================================================================================
 
