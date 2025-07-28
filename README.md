@@ -12,9 +12,9 @@ El flujo de trabajo del proyecto consistió de las siguientes etapas:
 
 -**Fuentes de datos**: se importa la data desde dos fuentes (ERP y CRM) mediante archivos csv.
 
--**Calidad de los datos**: se limpian y resuelven los principales errores de los datos (ETL) para el posterior análisis.
+-**Calidad de los datos**: se procesan los datos (limpieza y depuración de errores) mediante querys SQL (ETL).
 
--**Integración de los datos**: se combinan ambas fuentes de datos en un solo modelo de datos diseñado para realizar Querys de negocios.
+-**Integración de los datos**: se combinan ambas fuentes de datos en un solo modelo de datos diseñado para realizar querys de negocios (modelado dimensional).
 
 -**Documentación**: se provee la documentación del modelo de datos para los interesados en el análisis posterior de los datos.
 
