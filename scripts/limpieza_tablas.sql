@@ -52,7 +52,7 @@ BEGIN
 	SELECT *
 	FROM (
 	SELECT *, ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) as flag_last
-	FROM crm_cust_info) AS T ##hacemos una subconsulta para filtrar el ranking de flag_last
+	FROM crm_cust_info) AS T #hacemos una subconsulta para filtrar el ranking de flag_last
 	WHERE flag_last = 1 AND cst_id <>0;
 
 	#Query diagnóstico espacios innecesarios (usando TRIM)
@@ -65,6 +65,7 @@ BEGIN
 	SELECT cst_gndr FROM crm_cust_info
 	WHERE cst_gndr <> TRIM(cst_gndr);
 
+	#Aplicamos una query para limpiar espacios indeseados 
 	SELECT 
 	cst_id,
 	cst_key,
@@ -75,7 +76,7 @@ BEGIN
 	cst_create_date
 	FROM (
 			SELECT *, ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) as flag_last
-			FROM crm_cust_info) AS t ##hacemos una subconsulta para filtrar el ranking de flag_last
+			FROM crm_cust_info) AS t #reutilizamos la tabla limpia anterior mediante una subconsulta
 			WHERE flag_last = 1 AND cst_id <>0;
 
 	#Estandarización de datos y consistencia
@@ -83,7 +84,7 @@ BEGIN
 	SELECT DISTINCT cst_gndr
 	FROM crm_cust_info;
 
-	#Pasa que hay 2 columnas que tienen la misma abreviatura y puede confudir, por lo tanto:
+	#La columna gender y la columna marital_status tienen la misma abreviatura y pueden confudir. Usamos CASE para diferenciarlas:
 
 	SELECT 
 	cst_id,
@@ -103,10 +104,10 @@ BEGIN
 	cst_create_date
 	FROM (
 			SELECT *, ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) as flag_last
-			FROM crm_cust_info) AS t ##hacemos una subconsulta para filtrar el ranking de flag_last
+			FROM crm_cust_info) AS t 
 			WHERE flag_last = 1 AND cst_id <>0;
 			
-	#Crear tabla limpia a partir de Query anterior:
+	#Crearmos una tabla limpia a partir de Query anterior (fin limpieza crm_cust_info):
 
 	CREATE TABLE crm_cust_info_clean AS
 	SELECT 
@@ -132,7 +133,7 @@ BEGIN
 			
 	SELECT * FROM crm_cust_info_clean;
 
-	#Clean cmr_prd_info
+	#Limpieza cmr_prd_info
 
 	SELECT * FROM crm_prd_info;
 
