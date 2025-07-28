@@ -30,7 +30,7 @@ CREATE PROCEDURE limpieza_tablas_datawarehouse()
 BEGIN
 
 	#Clean crm_cust_info
-	#Registros duplicados
+	#Query Diagnóstico Registros duplicados
 
 	SELECT cst_id, COUNT(*) FROM crm_cust_info
 	GROUP BY cst_id
@@ -38,6 +38,7 @@ BEGIN
 	ORDER BY cst_id ASC;
 
 	SELECT * FROM crm_cust_info;
+	#Al tener registros duplicados varias veces por cst_id, es necesario dejar los más recientes.
 
 	#Estos son los registros que deberíamos dejar en nuestra base de datos --> Son los registros más recientes:
 
@@ -46,7 +47,7 @@ BEGIN
 	ORDER BY cst_create_date DESC
 	LIMIT 6;
 
-	#Para ello, debemos usar Window Function:
+	#Para ello, podemos usar ROW_NUMBER():
 
 	SELECT *
 	FROM (
@@ -54,7 +55,7 @@ BEGIN
 	FROM crm_cust_info) AS T ##hacemos una subconsulta para filtrar el ranking de flag_last
 	WHERE flag_last = 1 AND cst_id <>0;
 
-	#Espacios innecesarios
+	#Query diagnóstico espacios innecesarios (usando TRIM)
 	SELECT cst_firstname FROM crm_cust_info
 	WHERE cst_firstname <> TRIM(cst_firstname);
 
