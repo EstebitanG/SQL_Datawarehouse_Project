@@ -58,7 +58,7 @@ CREATE TABLE erp_PX_CAT_G1V2 (ID VARCHAR(50),
                             
 SELECT @@sql_mode;
 
-SET sql_mode = 'NO_ENGINE_SUBSTITUTION';
+SET sql_mode = 'NO_ENGINE_SUBSTITUTION'; #permite mayor control sobre las consultas en entornos específicos 
 
 SHOW VARIABLES LIKE 'secure_file_priv';
 
