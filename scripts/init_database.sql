@@ -15,7 +15,7 @@
 
 */
 
-CREATE DATABASE DataWarehouse;
+CREATE DATABASE IF NOT EXISTS DataWarehouse;
 
 USE DataWarehouse;
 
