@@ -24,7 +24,7 @@ SELECT
 		cc.cst_lastname,
 		cc.cst_marital_status,
 		cc.cst_create_date,
-        eca.bdate_clean,
+        	eca.bdate_clean,
         CASE WHEN cc.cst_gndr <>'Unknown' THEN cc.cst_gndr #le hacemos caso a la tabla customer CRM (cc.cst_gndr y eca_gen no coinciden siempre, lo cual no puede ser)
 			ELSE COALESCE(eca.gen_clean, 'Unknown')
         END AS new_gen,
@@ -92,12 +92,12 @@ SELECT
 	cic.cat_id AS category_id,
 	cic.prd_key AS product_number,
 	px.CAT AS category,
-    px.SUBCAT AS subcategory,
+    	px.SUBCAT AS subcategory,
 	cic.prd_nm AS product_name,
 	cic.prd_cost AS cost,
 	cic.prd_line AS product_line,
 	cic.prd_start_dt AS start_date,
-    px.MAINTENANCE
+    	px.MAINTENANCE
 FROM crm_prd_info_clean AS cic
 LEFT JOIN erp_px_cat_g1v2_clean AS px
 ON cic.cat_id = px.id #se hace el JOIN con cat_id
@@ -115,7 +115,7 @@ CREATE VIEW FACT_VENTAS AS
 SELECT 
 	csd.sls_ord_num AS order_number,
 	pr.product_key,
-    cu.customer_key,
+    	cu.customer_key,
 	csd.sls_order_dt AS order_date,
 	csd.sls_ship_dt AS shipping_date,
 	csd.sls_due_dt AS due_date,
