@@ -14,7 +14,7 @@ Uso:
 ==========================================================================================================================================
 */
 
-#Para llegar al modelo relacional depurado, unimos las tablas mediante JOINS, considerando la información que entregan las tablas (CLIENTES - PRODUCTOS - VENTAS)
+#Para llegar al modelo dimensional depurado, unimos las tablas mediante JOINS, considerando la información que entregan las tablas (CLIENTES - PRODUCTOS - VENTAS)
 
 #Tablas CLIENTES (3 tablas - crm_cust_info_clean, erp_cust_az12_clean, erp_loc_a101_clean)
 SELECT 
@@ -108,8 +108,8 @@ SELECT * FROM DIMENSION_PRODUCTO;
 
 #Tabla Ventas (1 tabla - crm_sales_details_clean)
 
-#Creamos una Vista con el Facto completo (Tabla Ventas), donde las claves sintéticas vienen de las tablas dimensiones (como claves foráneas)
-#De esta forma conectamos las tablas Dimensiones con las tablas Factos
+#Creamos una Vista con el HECHO completo (Tabla Ventas), donde las claves sintéticas vienen de las tablas dimensiones (como claves foráneas)
+#De esta forma conectamos las tablas Dimensiones con la tabla HECHO
 
 CREATE VIEW FACT_VENTAS AS
 SELECT 
