@@ -114,8 +114,8 @@ SELECT * FROM DIMENSION_PRODUCTO;
 CREATE VIEW FACT_VENTAS AS
 SELECT 
 	csd.sls_ord_num AS order_number,
-	pr.product_key,
-    	cu.customer_key,
+	pr.product_key, #FK
+    	cu.customer_key, #FK
 	csd.sls_order_dt AS order_date,
 	csd.sls_ship_dt AS shipping_date,
 	csd.sls_due_dt AS due_date,
