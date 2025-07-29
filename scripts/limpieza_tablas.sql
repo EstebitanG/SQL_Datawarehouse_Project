@@ -259,7 +259,7 @@ BEGIN
 	#Reglas para arreglar las columnas de ventas
 	#1 si las ventas son negativas, 0 o nulas, deducirlas de la multiplicación de la cantidad con precio
 	#2 si el precio es 0, o nulo, calcularlo deduciéndolo de las ventas y cantidad
-	#3si el precio es negativo, convertirlo a positivo
+	#3 si el precio es negativo, convertirlo a positivo
 
 	SELECT sls_sales, sls_quantity, sls_price,
 	CASE
@@ -276,7 +276,7 @@ BEGIN
 	FROM crm_sales_details
 	ORDER BY sls_sales asc;
 
-	#Creamos tabla limpia de crm_sales_details_clean según los diagnósticos implementados
+	#Creamos tabla limpia de crm_sales_details_clean según los diagnósticos implementados (fin limpieza crm_sales_details)
 
 	CREATE TABLE crm_sales_details_clean AS
 	SELECT
