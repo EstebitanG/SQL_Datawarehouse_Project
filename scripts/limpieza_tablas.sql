@@ -220,43 +220,16 @@ BEGIN
 
 	#Limpieza crm_sales_details
 
-	#Query de limpieza
-	SELECT
-	sls_ord_num,
-	sls_prd_key,
-	sls_cust_id,
-	CASE WHEN sls_order_dt = 0 OR LENGTH(sls_order_dt) <> 10 THEN NULL
-		ELSE CAST(CAST(sls_order_dt AS CHAR) AS DATE)
-	END AS sls_order_dt,
-	CASE WHEN sls_ship_dt = 0 OR LENGTH(sls_ship_dt ) <> 10 THEN NULL
-		ELSE CAST(CAST(sls_ship_dt AS CHAR) AS DATE)
-	END AS sls_ship_dt,
-	CASE WHEN sls_due_dt = 0 OR LENGTH(sls_due_dt) <> 10 THEN NULL
-		ELSE CAST(CAST(sls_due_dt AS CHAR) AS DATE)
-	END AS sls_due_dt,
-	CASE
-		WHEN sls_sales <= 0 OR sls_sales IS NULL OR sls_sales <>sls_quantity*ABS(sls_price) THEN sls_quantity*ABS(sls_price) #funcion ABSOLUTE, convierte de negativo a positivo
-		ELSE sls_sales
-	END AS sls_sales_clean,
-
-	CASE 
-		WHEN sls_price IS NULL OR sls_price <= 0 THEN sls_sales / NULLIF(sls_quantity,0)
-		ELSE sls_price
-	END AS sls_price_clean,
-	sls_quantity
-		
-	FROM crm_sales_details;
-
-
 	SHOW COLUMNS FROM crm_sales_details;
 
-	#Espacios indeseados
+	#Query para diagnosticar espacios indeseados
 	SELECT * FROM crm_sales_details
 	WHERE sls_ord_num <> TRIM(sls_ord_num);
 
 	#Limpieza de columnas para conectar con otras tablas
 	SELECT * FROM crm_sales_details;
 
+	#Diagnosticamos con NULLIF() para fechas inexistentes
 	SELECT 
 	NULLIF(sls_order_dt , 0) AS sls_order_dt
 	FROM crm_sales_details
@@ -268,11 +241,11 @@ BEGIN
 	FROM crm_sales_details
 	WHERE sls_order_dt <= 0 OR LENGTH(sls_order_dt) <> 10;
 
-	#Corroborar coherencia entre fechas de pedido, envío y vencimiento
+	#Corroborar coherencia entre fechas de pedido, envío y vencimiento (pedido viene antes de envío, y ésta antes de vencimiento)
 	SELECT * FROM crm_sales_details
 	WHERE sls_order_dt > sls_ship_dt OR sls_order_dt > sls_due_dt; #todo OK
 
-	#Corroborar coherencia entre las últimas 3 columnas de venta
+	#Corroborar coherencia entre las últimas 3 columnas de venta (ventas = precio * cantidad)
 	SELECT sls_ord_num, sls_sales,
 	sls_quantity,
 	sls_price
@@ -303,7 +276,7 @@ BEGIN
 	FROM crm_sales_details
 	ORDER BY sls_sales asc;
 
-	#Creamos tabla limpia de crm_sales_details_clean
+	#Creamos tabla limpia de crm_sales_details_clean según los diagnósticos implementados
 
 	CREATE TABLE crm_sales_details_clean AS
 	SELECT
@@ -311,13 +284,13 @@ BEGIN
 	sls_prd_key,
 	sls_cust_id,
 	CASE WHEN sls_order_dt = 0 OR LENGTH(sls_order_dt) <> 10 THEN NULL
-		ELSE CAST(CAST(sls_order_dt AS CHAR) AS DATE)
+		ELSE CAST(CAST(sls_order_dt AS CHAR) AS DATE) #para todas las fechas existentes, las convertimos a formato DATE
 	END AS sls_order_dt,
 	CASE WHEN sls_ship_dt = 0 OR LENGTH(sls_ship_dt ) <> 10 THEN NULL
-		ELSE CAST(CAST(sls_ship_dt AS CHAR) AS DATE)
+		ELSE CAST(CAST(sls_ship_dt AS CHAR) AS DATE) #aplicamos la misma regla de sls_order_dt para sls_ship_dt
 	END AS sls_ship_dt,
 	CASE WHEN sls_due_dt = 0 OR LENGTH(sls_due_dt) <> 10 THEN NULL
-		ELSE CAST(CAST(sls_due_dt AS CHAR) AS DATE)
+		ELSE CAST(CAST(sls_due_dt AS CHAR) AS DATE) #misma situación para sls_due_dt
 	END AS sls_due_dt,
 	CASE
 		WHEN sls_sales <= 0 OR sls_sales IS NULL OR sls_sales <>sls_quantity*ABS(sls_price) THEN sls_quantity*ABS(sls_price) #funcion ABSOLUTE, convierte de negativo a positivo
