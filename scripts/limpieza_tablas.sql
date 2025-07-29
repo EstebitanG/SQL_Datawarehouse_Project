@@ -310,10 +310,11 @@ BEGIN
 	SHOW COLUMNS FROM crm_sales_details_clean;
 
 	#Limpieza erp_cust_az12
+	#Aplicamos transformaciones como limpiar caracteres indeseados mediante SUBSTRING(), corregir coherencia de fechas y limpiar caracteres extraños con REGEXP_REPLACE
 
 	SELECT
 	CASE
-		WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LENGTH(cid))
+		WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LENGTH(cid)) #tenemos caracteres indeseados al inicio de esta columna que impide conectar con otras tablas
 		ELSE cid
 	END AS cid_clean,
 	CASE WHEN bdate > CURDATE() THEN NULL
@@ -332,7 +333,7 @@ BEGIN
 
 	SELECT 
 	CASE
-		WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LENGTH(cid))
+		WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LENGTH(cid)) #mis situación tabla anterior
 		ELSE cid
 	END AS cid_clean,
 	bdate,
@@ -363,7 +364,7 @@ BEGIN
 		END AS gen_clean
 	FROM erp_cust_az12;
 
-	#Hay caracteres invisibles, por lo que hay que hacer pasos adicionales
+	#Hay caracteres invisibles, por lo que hay que hacer pasos adicionales usando REGEXP_REPLAEC
 
 	SELECT DISTINCT 
 	  gen,
@@ -376,7 +377,7 @@ BEGIN
 	  END AS gen_clean
 	FROM erp_cust_az12;
 
-	#Creación tabla limpia erp_cust_az12_clean
+	#Creación tabla limpia erp_cust_az12_clean usando querys anteriores (fin limpieza erp_cust_az12)
 
 	CREATE TABLE erp_cust_az12_clean AS
 	SELECT
@@ -403,7 +404,7 @@ BEGIN
 	#Limpieza tabla erp_loc_a101
 
 	SELECT 
-	REPLACE(cid,'-','') cid, 
+	REPLACE(cid,'-','') cid, #reemplazamos algunos caracteres
 	cntry 
 	FROM erp_loc_a101;
 
@@ -411,7 +412,7 @@ BEGIN
 
 	SELECT  
 	REPLACE(cid,'-','') cid,
-	CASE
+	CASE #reemplazamos abreviación de países por nombre completo, considerando caracteres extraños
 		WHEN REGEXP_REPLACE(UPPER(cntry), '[^A-Z]', '') = 'DE' THEN 'Germany'
 		WHEN REGEXP_REPLACE(UPPER(cntry), '[^A-Z]', '') IN ('US', 'USA') THEN 'United States'
 		WHEN REGEXP_REPLACE(cntry, '[[:space:]]', '') = '' OR cntry IS NULL THEN 'n/a'
