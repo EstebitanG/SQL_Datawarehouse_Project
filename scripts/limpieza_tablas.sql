@@ -107,7 +107,7 @@ BEGIN
 			FROM crm_cust_info) AS t 
 			WHERE flag_last = 1 AND cst_id <>0;
 			
-	#Crearmos una tabla limpia a partir de Query anterior (fin limpieza crm_cust_info):
+	#Creamos una tabla limpia a partir de Query anterior (fin limpieza crm_cust_info):
 
 	CREATE TABLE crm_cust_info_clean AS
 	SELECT 
@@ -128,7 +128,7 @@ BEGIN
 	cst_create_date
 	FROM (
 			SELECT *, ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) as flag_last
-			FROM crm_cust_info) AS t ##hacemos una subconsulta para filtrar el ranking de flag_last
+			FROM crm_cust_info) AS t
 			WHERE flag_last = 1 AND cst_id <>0;
 			
 	SELECT * FROM crm_cust_info_clean;
@@ -137,17 +137,21 @@ BEGIN
 
 	SELECT * FROM crm_prd_info;
 
-	#Comprobación duplicados
+	#Query comprobación duplicados
 
 	SELECT prd_inf, COUNT(prd_inf) FROM crm_prd_info
 	GROUP BY prd_inf
-	HAVING COUNT(prd_inf) > 1 OR prd_inf = '';
+	HAVING COUNT(prd_inf) > 1 OR prd_inf = ''; #no hay duplicados en esta tabla
 
+	#Explorando la tabla de productos, vemos que la columna prd_key contiene información de diversas fuentes en un mismo campo	
+	#Se hace necesario separar esa columna medianet SUBSTRING()
+	#En la misma query, asignamos nombres legibles a las categorías de producto, convertimos prd_start_dt a formato fecha y le damos orden cronológico
+		
 	SELECT 
 	prd_inf,
 	prd_key,
-	REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_')  AS cat_id,
-	SUBSTRING(prd_key,7,LENGTH(prd_key)) AS prd_key,
+	REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_')  AS cat_id, #los primeros 5 caracteres corresponden a cat_id
+	SUBSTRING(prd_key,7,LENGTH(prd_key)) AS prd_key, #los caracteres restantes coresponden a prd_key
 	prd_nm,
 	IF(prd_cost ='', 0, prd_cost) AS prd_cost,
 	CASE
@@ -161,14 +165,15 @@ BEGIN
 	CAST(LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) AS DATE) AS prd_end_dt_test
 	FROM crm_prd_info;
 
-	SELECT DISTINCT id from erp_px_cat_g1v2; #con esto podemos hacer joins entre tablas
-	SELECT sls_prd_key FROM  crm_sales_details; #con esto podemos hacer joins entre tablas
+	#Exploramos las claves naturales de las otras tablas para hacer JOINS posteriormente
+	SELECT DISTINCT id from erp_px_cat_g1v2; 
+	SELECT sls_prd_key FROM  crm_sales_details; 
 
-	#Chequear espacios innecesarios
+	#Query para chequear espacios innecesarios
 	SELECT prd_nm FROM crm_prd_info
 	WHERE prd_nm <> TRIM(prd_nm); #no hay espacios innecesarios
 
-	#Chequear nulos y números negativos
+	#Query para chequear nulos y números negativos
 	SELECT prd_key, prd_cost FROM crm_prd_info
 	WHERE prd_cost < 0 OR prd_cost = '';
 
@@ -176,8 +181,9 @@ BEGIN
 	FROM crm_prd_info;
 
 	SELECT * FROM crm_prd_info
-	WHERE prd_end_dt < prd_start_dt; #Existen datos incoherentes en estas columnas, por lo que es necesario cambiar el orden
+	WHERE prd_end_dt < prd_start_dt; #Existen datos incoherentes en estas columnas, por lo que es necesario cambiar el orden cronológico
 
+	#Para cambiar el orden cronológico de las fechas, usamos LEAD() y condicionamos con una subconsulta
 	SELECT prd_inf, 
 	prd_key, 
 	prd_nm, 
@@ -188,7 +194,7 @@ BEGIN
 	WHERE prd_key IN (SELECT prd_key FROM crm_prd_info
 					 WHERE prd_end_dt < prd_start_dt);
 					 
-	#Creamos la tabla limpia final
+	#Creamos la tabla limpia final (fin limpieza crm_prd_info)
 
 	CREATE TABLE crm_prd_info_clean AS 
 	SELECT 
@@ -212,7 +218,7 @@ BEGIN
 
 	SHOW COLUMNS FROM crm_prd_info_clean;
 
-	#Clean crm_sales_details
+	#Limpieza crm_sales_details
 
 	#Query de limpieza
 	SELECT
